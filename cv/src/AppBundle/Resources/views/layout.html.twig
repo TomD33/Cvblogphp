@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Duval Thomas{% endblock %}</title>
+    <link href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/bootstrap/bootstrap-grid.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/bootstrap/bootstrap-reboot.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn...">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom" style="padding-top: 0%">
+    <a class="navbar-brand" style="color: white">{{'Duval Thomas'|trans }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <div class="wrapper"></div>
+    </button>
+    <div class="collapse navbar-collapse" id="navbars">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item{{ app.request.get('_route') == 'homepage' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ path('homepage') }}">{{ 'Description'|trans }} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item{{ app.request.get('_route') == 'blog' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ path('blog') }}">{{ 'Blog'|trans }} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="nav-link navbar-log" href="{{ path('fos_user_security_logout') }}">
+                    {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+                </a>
+                {% else %}
+                <a class="nav-link navbar-log" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>
+{% for type, messages in app.session.flashBag.all %}
+    {% for message in messages %}
+        <div class="{{ type }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+{% block body %}
+{% endblock  %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block body %}
+    {{ parent() }}
+    <div class="Article" style="padding-top: 1%">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for article in articles %}
+                        <div class="article">
+                            <div class="card mb-8">
+                                <img class="img-fluid rounded" src="{{ article.image }}" alt="Image">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ article.titre }}</h2>
+                                    <p class="card-text">{{ article.description }}</p>
+                                    <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-primary">Lire &rarr;</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <a href="">{{ article.auteur }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
