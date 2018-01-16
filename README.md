@@ -17,9 +17,9 @@ Et aussi vous pouvez accéder à mon cv en ligne.
 
 Ce projet d'agit de mon site CV en ligne il y a toute mes compétences, mes expériences et pleins autres choses.
 
-Vous pouvez accéder aussi à la parite administration en vous connectant avec les identifiants.
+Vous pouvez accéder aussi à la parite administration en vous connectant sur l'url suivant avec les identifiants ci dessous.
+Entrez l'URL suivant : http://127.0.0.1:8001/admin
 ID :admin
 Pwd :admin
 Et quand vous avez réussi à vous connecter sur la partie administration.
-Entrez l'URL suivant : http://127.0.0.1:8001/admin
 Vous pouvez voir mon blog et plein d'autre chose
